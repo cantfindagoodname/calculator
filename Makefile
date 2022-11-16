@@ -2,14 +2,14 @@ BINDIR=bin
 SRCDIR=src
 INCDIR=include
 
-MAINDIR=. tests
+MAINDIR=.
 
 CC=gcc
 OPT=-Og
 
 LDFLAGS=-lm
 DEPFLAGS=-MP -MD
-CFLAGS=-Wall -Wextra -g $(foreach D,$(INCDIR),-I$(D)) $(OPT) $(DEPFLAGS)
+CFLAGS=-Wall -Wextra -Wimplicit-fallthrough=0 -g $(foreach D,$(INCDIR),-I$(D)) $(OPT) $(DEPFLAGS)
 
 SRC=$(foreach D,$(SRCDIR),$(wildcard $(D)/*.c))
 MAIN=$(foreach D,$(MAINDIR),$(wildcard $(D)/*.c))
