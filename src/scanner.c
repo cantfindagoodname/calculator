@@ -19,7 +19,7 @@ static CharType char_type(int n)
                 return CT_INVALID;
 }
 
-void scanner(char *line)
+void scanner(TokenNode **list, char *line)
 {
         printf("You insert %s\n", line);
         LexState state = STATE_NEXT;
@@ -35,7 +35,7 @@ void scanner(char *line)
                         switch (state) {
                         case STATE_NUMBER:
                                 buf[bidx] = '\0';
-                                printf("%s\n", buf);
+                                insert_token(list, buf);
                         default:
                                 state = STATE_END;
                                 break;
@@ -51,8 +51,12 @@ void scanner(char *line)
                                 buf[bidx++] = c;
                         } else if (ct == CT_OP) {
                                 buf[bidx] = '\0';
-                                printf("%s\n", buf);
-                                printf("op\n");
+                                insert_token(list, buf);
+
+                                bidx = 0;
+                                buf[bidx++] = c;
+                                buf[bidx++] = '\0';
+                                insert_token(list, buf);
                                 state = STATE_NEXT;
                         }
                         break;
@@ -62,7 +66,10 @@ void scanner(char *line)
                                 buf[bidx++] = c;
                                 state = STATE_NUMBER;
                         } else if (ct == CT_OP) {
-                                printf("op\n");
+                                bidx = 0;
+                                buf[bidx++] = c;
+                                buf[bidx++] = '\0';
+                                insert_token(list, buf);
                         }
                         break;
                 default:

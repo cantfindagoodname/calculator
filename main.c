@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "tokens.h"
 #include "def.h"
 #include "scanner.h"
 
@@ -10,6 +11,7 @@ static char buf[BUF_SIZE + 1];
 
 int main()
 {
+        TokenNode *token_list = NULL;
         while (1) {
                 /* Get Input */
                 fprintf(stdout, "(calc) ");
@@ -21,7 +23,10 @@ int main()
                         fscanf(stdin, "%*[^\n]");
                 }
 
-                scanner(buf);
+                scanner(&token_list, buf);
+
+                free(token_list);
+                token_list = NULL;
         }
         return 0;
 }

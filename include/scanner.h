@@ -19,6 +19,6 @@ typedef enum CharType {
 
 static char buf[BUF_SIZE + 1];
 
-void scanner(char *input);
+void scanner(TokenNode **list, char *line);
 
 #endif
