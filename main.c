@@ -24,6 +24,9 @@ int main()
                 }
 
                 scanner(&token_list, buf);
+                for (TokenNode *temp = token_list; temp; temp = temp->next) {
+                        printf("%d %s\n", temp->token.type, temp->token.value);
+                }
 
                 free(token_list);
                 token_list = NULL;

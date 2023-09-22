@@ -14,9 +14,6 @@ TokenType tokenize(char *str)
                 return TOKEN_MUL;
         case '/':
                 return TOKEN_DIV;
-        case '(':
-        case ')':
-                return TOKEN_PAR;
         default:
                 return TOKEN_NUM;
         }

@@ -10,8 +10,7 @@ static CharType char_type(int n)
                 return CT_DIG;
         if (n == '\0')
                 return CT_END;
-        if (n == '+' || n == '-' || n == '*' || n == '/' || n == '(' ||
-            n == ')')
+        if (n == '+' || n == '-' || n == '*' || n == '/')
                 return CT_OP;
         else if (n == ' ' || n == '\t')
                 return CT_SPACE;

@@ -1,15 +1,14 @@
 #ifndef __TOKEN_H__
 #define __TOKEN_H__
 
-#define VALID_TOKENS "01234567890()+-*/"
+#define VALID_TOKENS "01234567890+-*/"
 
-typedef enum type {
+typedef enum TokenType {
         TOKEN_NUM,
         TOKEN_ADD,
         TOKEN_SUB,
         TOKEN_MUL,
         TOKEN_DIV,
-        TOKEN_PAR, /* parentheses */
 } TokenType;
 
 typedef struct Token {
